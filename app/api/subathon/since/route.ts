@@ -57,7 +57,7 @@ export async function GET(req: Request) {
   try {
     formattedDuration = humanizeDuration(end.diff(start), {
       largest: 4,
-      round: false,
+      round: true,
       language: locale,
     });
   } catch (e) {
