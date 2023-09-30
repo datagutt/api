@@ -55,7 +55,18 @@ export async function GET(req: Request) {
 
   let formattedDuration = "";
   try {
-    formattedDuration = humanizeDuration(end.diff(start), {
+    formattedDuration = humanizeDuration.humanizer({
+      unitMeasures: {
+        y: 31557600000,
+        mo: 30 * 24 * 60 * 60 * 1000,
+        w: 604800000,
+        d: 86400000,
+        h: 3600000,
+        m: 60000,
+        s: 1000,
+        ms: 1,
+      },
+    })(end.diff(start), {
       largest: 4,
       round: true,
       language: locale,
